@@ -15,6 +15,7 @@ import {
   Clock,
   Check,
 } from 'lucide-react';
+import { StockInputSection } from './StockInputSection';
 
 interface NewTradeViewProps {
   settings: AccountSettings;
@@ -262,35 +263,13 @@ export const NewTradeView: React.FC<NewTradeViewProps> = ({
             </span>
           </div>
 
-          {/* 标的信息 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-medium text-zinc-300 mb-1">
-                标的名称 *
-              </label>
-              <input
-                type="text"
-                required
-                placeholder="例如：西部数据、中际旭创"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                className="w-full rounded-xl bg-black/40 border border-white/10 px-3 py-2 text-xs text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-medium text-zinc-300 mb-1">
-                标的代码 *
-              </label>
-              <input
-                type="text"
-                required
-                placeholder="例如：WDC, 300308, 600519"
-                value={symbol}
-                onChange={(e) => setSymbol(e.target.value)}
-                className="w-full rounded-xl bg-black/40 border border-white/10 px-3 py-2 text-xs font-mono text-zinc-100 placeholder-zinc-600 focus:outline-none focus:border-indigo-500"
-              />
-            </div>
-          </div>
+          {/* 标的信息与智能联动 */}
+          <StockInputSection
+            name={name}
+            symbol={symbol}
+            onNameChange={setName}
+            onSymbolChange={setSymbol}
+          />
 
           {/* A: Alpha */}
           <div className="space-y-1">
